@@ -1,0 +1,11 @@
+<h2>Employee Directory</h2>
+<ul>
+  <li *ngFor="let emp of employees">
+    {{ emp.name }} - {{ emp.role }}
+  </li>
+</ul>
+
+<h3>Add Employee</h3>
+<input [(ngModel)]="newEmployee.name" placeholder="Name" />
+<input [(ngModel)]="newEmployee.role" placeholder="Role" />
+<button (click)="addEmployee()">Add</button>

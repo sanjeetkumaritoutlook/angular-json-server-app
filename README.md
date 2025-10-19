@@ -39,6 +39,12 @@ Render.com
  is a free hosting platform (like Vercel or Netlify, but supports backend apps).
 
 Developers deploy the JSON Server there so it’s available online 24/7.
+```
+backend/
+├── db.json
+├── package.json
+└── public/
+```
 
 ## architecture
 ```
