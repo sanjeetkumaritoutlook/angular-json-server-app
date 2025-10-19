@@ -87,3 +87,63 @@ h2 {
 .delete-btn:hover {
   background-color: #b52b36;
 }
+
+
+/* inline inputs inside the list */
+.inline-input {
+  padding: 6px 8px;
+  margin-right: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 160px;
+}
+
+/* Styling for employee name and role in view mode */
+.employee-name {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-right: 20px;
+}
+
+.employee-role {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.employee-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* buttons */
+.edit-btn {
+  background: #ffc107;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.save-btn {
+  background: #28a745;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+}
+
+.cancel-btn {
+  background: #6c757d;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+}
+
+

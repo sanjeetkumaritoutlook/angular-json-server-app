@@ -23,4 +23,8 @@ export class ApiService {
   deleteEmployee(id: number): Observable<any> {
   return this.http.delete<any>(`${this.baseUrl}/employees/${id}`);
  }
+   updateEmployee(id: number, employee: any): Observable<any> {
+    // Using PUT to replace the object; change to PATCH for partial updates
+    return this.http.put<any>(`${this.baseUrl}/employees/${id}`, employee);
+  }
 }

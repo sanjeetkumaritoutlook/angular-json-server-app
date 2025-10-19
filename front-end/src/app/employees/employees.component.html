@@ -1,31 +1,39 @@
 <div class="employee-container">
-  <h2>👩‍💻 Employee Directory</h2>
+  <h2>👩‍💼 Employee Directory</h2>
 
-  <table class="employee-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Role</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let emp of employees">
-        <td>{{ emp.id }}</td>
-        <td>{{ emp.name }}</td>
-        <td>{{ emp.role }}</td>
-        <td>
-          <button class="delete-btn" (click)="deleteEmployee(emp.id)">🗑️ Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ul class="employee-list">
+    <li *ngFor="let emp of employees" class="employee-item">
+      <div class="employee-info">
+        <!-- If this row is being edited, show inputs bound to editBuffer -->
+        <ng-container *ngIf="editingId === emp.id; else viewMode">
+          <input class="inline-input" [(ngModel)]="editBuffer.name" placeholder="Name" />
+          <input class="inline-input" [(ngModel)]="editBuffer.role" placeholder="Role" />
+        </ng-container>
 
-  <div class="add-section">
-    <h3>Add Employee</h3>
+        <ng-template #viewMode>
+          <span class="employee-name">{{ emp.name }}</span>
+          <span class="employee-role">{{ emp.role }}</span>
+        </ng-template>
+      </div>
+
+      <div class="employee-actions">
+        <ng-container *ngIf="editingId === emp.id; else actionButtons">
+          <button class="save-btn" (click)="saveEdit()">💾 Save</button>
+          <button class="cancel-btn" (click)="cancelEdit()">✖ Cancel</button>
+        </ng-container>
+
+        <ng-template #actionButtons>
+          <button class="edit-btn" (click)="editEmployee(emp)">✏️ Edit</button>
+          <button class="delete-btn" (click)="deleteEmployee(emp.id)">🗑 Delete</button>
+        </ng-template>
+      </div>
+    </li>
+  </ul>
+
+  <div class="add-employee">
+    <h3>➕ Add New Employee</h3>
     <input [(ngModel)]="newEmployee.name" placeholder="Name" />
     <input [(ngModel)]="newEmployee.role" placeholder="Role" />
-    <button class="add-btn" (click)="addEmployee()">➕ Add</button>
+    <button class="add-btn" (click)="addEmployee()">Add</button>
   </div>
 </div>

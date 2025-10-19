@@ -10,6 +10,10 @@ export class EmployeesComponent implements OnInit {
   employees: any[] = [];
   newEmployee = { name: '', role: '' };
 
+   // For inline editing
+  editingId: number | null = null;
+  editBuffer: { id?: number; name?: string; role?: string } = {};
+
   constructor(private api: ApiService) {}
 
   ngOnInit() {
@@ -31,5 +35,41 @@ export class EmployeesComponent implements OnInit {
     if (confirm('Are you sure you want to delete this employee?')) {
       this.api.deleteEmployee(id).subscribe(() => this.loadEmployees());
     }
+  }
+
+   // Begin editing: populate buffer
+  editEmployee(emp: any) {
+    this.editingId = emp.id;
+    // shallow copy so changes are buffered until Save
+    this.editBuffer = { id: emp.id, name: emp.name, role: emp.role };
+  }
+
+  // Cancel edit
+  cancelEdit() {
+    this.editingId = null;
+    this.editBuffer = {};
+  }
+
+  // Save changes
+  saveEdit() {
+    if (!this.editingId) return;
+
+    const id = this.editingId;
+    const payload = {
+      name: (this.editBuffer.name || '').trim(),
+      role: (this.editBuffer.role || '').trim()
+    };
+
+    // optional validation
+    if (!payload.name || !payload.role) {
+      alert('Name and Role cannot be empty.');
+      return;
+    }
+
+    this.api.updateEmployee(id, payload).subscribe(() => {
+      this.editingId = null;
+      this.editBuffer = {};
+      this.loadEmployees();
+    });
   }
 }
