@@ -82,3 +82,20 @@ ng generate environments
 
 ng generate environments --development --staging
 ```
+
+in backend folder
+
+# Initialize JSON Server
+npm init -y
+
+npm install json-server
+
+## Why this setup is ideal
+
+✅ Only one repo to maintain
+
+✅ Works perfectly with Vercel + Render
+
+✅ Easy migration — you can later replace JSON Server with a NestJS or Express API (MEAN stack) under /backend
+
+✅ Great for portfolio or enterprise-style learning projects
