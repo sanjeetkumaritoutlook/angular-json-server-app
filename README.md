@@ -105,3 +105,7 @@ npm install json-server
 ✅ Easy migration — you can later replace JSON Server with a NestJS or Express API (MEAN stack) under /backend
 
 ✅ Great for portfolio or enterprise-style learning projects
+
+## for edit inline
+
+This uses PUT (you can switch to PATCH if you prefer partial updates).
