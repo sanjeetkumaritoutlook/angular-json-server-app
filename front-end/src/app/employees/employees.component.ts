@@ -26,4 +26,10 @@ export class EmployeesComponent implements OnInit {
       this.loadEmployees();
     });
   }
+
+  deleteEmployee(id: number) {
+    if (confirm('Are you sure you want to delete this employee?')) {
+      this.api.deleteEmployee(id).subscribe(() => this.loadEmployees());
+    }
+  }
 }
