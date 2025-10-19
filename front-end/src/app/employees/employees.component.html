@@ -1,11 +1,31 @@
-<h2>Employee Directory</h2>
-<ul>
-  <li *ngFor="let emp of employees">
-    {{ emp.name }} - {{ emp.role }}
-  </li>
-</ul>
+<div class="employee-container">
+  <h2>👩‍💻 Employee Directory</h2>
 
-<h3>Add Employee</h3>
-<input [(ngModel)]="newEmployee.name" placeholder="Name" />
-<input [(ngModel)]="newEmployee.role" placeholder="Role" />
-<button (click)="addEmployee()">Add</button>
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees">
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.role }}</td>
+        <td>
+          <button class="delete-btn" (click)="deleteEmployee(emp.id)">🗑️ Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="add-section">
+    <h3>Add Employee</h3>
+    <input [(ngModel)]="newEmployee.name" placeholder="Name" />
+    <input [(ngModel)]="newEmployee.role" placeholder="Role" />
+    <button class="add-btn" (click)="addEmployee()">➕ Add</button>
+  </div>
+</div>
